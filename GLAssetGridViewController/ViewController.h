@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)prompt:(id)sender;
 
 @end
 
