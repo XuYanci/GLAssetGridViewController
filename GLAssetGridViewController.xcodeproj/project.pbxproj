@@ -1,0 +1,701 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84FAE78A7CB655D07BD919A8 /* libPods-GLAssetGridViewControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC24D7F09E11992107D657E /* libPods-GLAssetGridViewControllerTests.a */; };
+		AD37970D1EC74F9900E3B9ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD37970C1EC74F9900E3B9ED /* main.m */; };
+		AD3797101EC74F9900E3B9ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD37970F1EC74F9900E3B9ED /* AppDelegate.m */; };
+		AD3797131EC74F9900E3B9ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3797121EC74F9900E3B9ED /* ViewController.m */; };
+		AD3797161EC74F9900E3B9ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3797141EC74F9900E3B9ED /* Main.storyboard */; };
+		AD3797181EC74F9900E3B9ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3797171EC74F9900E3B9ED /* Assets.xcassets */; };
+		AD37971B1EC74F9900E3B9ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3797191EC74F9900E3B9ED /* LaunchScreen.storyboard */; };
+		AD3797261EC74F9A00E3B9ED /* GLAssetGridViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3797251EC74F9A00E3B9ED /* GLAssetGridViewControllerTests.m */; };
+		AD3797311EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3797301EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests.m */; };
+		AD3797441EC7503300E3B9ED /* GLAssetGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD37973F1EC7503300E3B9ED /* GLAssetGridViewController.m */; };
+		AD3797451EC7503300E3B9ED /* GLAssetViewBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3797411EC7503300E3B9ED /* GLAssetViewBrowser.m */; };
+		AD3797461EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3797431EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m */; };
+		AD3797491EC7504E00E3B9ED /* UIView+CustomAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3797481EC7504E00E3B9ED /* UIView+CustomAutoLayout.m */; };
+		B18644F4FA59876B74F460D4 /* libPods-GLAssetGridViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FE48E7065CFF4D67AB9ED4 /* libPods-GLAssetGridViewController.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD3797221EC74F9900E3B9ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD3797001EC74F9900E3B9ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD3797071EC74F9900E3B9ED;
+			remoteInfo = GLAssetGridViewController;
+		};
+		AD37972D1EC74F9A00E3B9ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD3797001EC74F9900E3B9ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD3797071EC74F9900E3B9ED;
+			remoteInfo = GLAssetGridViewController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		34558AE2B42C661714175D43 /* Pods-GLAssetGridViewControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLAssetGridViewControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLAssetGridViewControllerTests/Pods-GLAssetGridViewControllerTests.release.xcconfig"; sourceTree = "<group>"; };
+		42FE48E7065CFF4D67AB9ED4 /* libPods-GLAssetGridViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GLAssetGridViewController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CC24D7F09E11992107D657E /* libPods-GLAssetGridViewControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GLAssetGridViewControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99A8BB04136139CAEF788A2F /* Pods-GLAssetGridViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLAssetGridViewController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GLAssetGridViewController/Pods-GLAssetGridViewController.debug.xcconfig"; sourceTree = "<group>"; };
+		AD3797081EC74F9900E3B9ED /* GLAssetGridViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLAssetGridViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD37970C1EC74F9900E3B9ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD37970E1EC74F9900E3B9ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AD37970F1EC74F9900E3B9ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AD3797111EC74F9900E3B9ED /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AD3797121EC74F9900E3B9ED /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AD3797151EC74F9900E3B9ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD3797171EC74F9900E3B9ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD37971A1EC74F9900E3B9ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AD37971C1EC74F9900E3B9ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD3797211EC74F9900E3B9ED /* GLAssetGridViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GLAssetGridViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD3797251EC74F9A00E3B9ED /* GLAssetGridViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLAssetGridViewControllerTests.m; sourceTree = "<group>"; };
+		AD3797271EC74F9A00E3B9ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD37972C1EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GLAssetGridViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD3797301EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLAssetGridViewControllerUITests.m; sourceTree = "<group>"; };
+		AD3797321EC74F9A00E3B9ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD37973E1EC7503300E3B9ED /* GLAssetGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAssetGridViewController.h; sourceTree = "<group>"; };
+		AD37973F1EC7503300E3B9ED /* GLAssetGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAssetGridViewController.m; sourceTree = "<group>"; };
+		AD3797401EC7503300E3B9ED /* GLAssetViewBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAssetViewBrowser.h; sourceTree = "<group>"; };
+		AD3797411EC7503300E3B9ED /* GLAssetViewBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAssetViewBrowser.m; sourceTree = "<group>"; };
+		AD3797421EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPickPicVidViewCollectionViewCell.h; sourceTree = "<group>"; };
+		AD3797431EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPickPicVidViewCollectionViewCell.m; sourceTree = "<group>"; };
+		AD3797471EC7504E00E3B9ED /* UIView+CustomAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomAutoLayout.h"; sourceTree = "<group>"; };
+		AD3797481EC7504E00E3B9ED /* UIView+CustomAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomAutoLayout.m"; sourceTree = "<group>"; };
+		DDE8D07B046A3BF1734A2B2E /* Pods-GLAssetGridViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLAssetGridViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLAssetGridViewController/Pods-GLAssetGridViewController.release.xcconfig"; sourceTree = "<group>"; };
+		FEEC24652ABC706D202CFB91 /* Pods-GLAssetGridViewControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLAssetGridViewControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GLAssetGridViewControllerTests/Pods-GLAssetGridViewControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD3797051EC74F9900E3B9ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B18644F4FA59876B74F460D4 /* libPods-GLAssetGridViewController.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD37971E1EC74F9900E3B9ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84FAE78A7CB655D07BD919A8 /* libPods-GLAssetGridViewControllerTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD3797291EC74F9A00E3B9ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD3796FF1EC74F9900E3B9ED = {
+			isa = PBXGroup;
+			children = (
+				AD37970A1EC74F9900E3B9ED /* GLAssetGridViewController */,
+				AD3797241EC74F9900E3B9ED /* GLAssetGridViewControllerTests */,
+				AD37972F1EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests */,
+				AD3797091EC74F9900E3B9ED /* Products */,
+				B518A904D41D5B25B51D9946 /* Pods */,
+				DD9AEE9CD2D728D33C2743F5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AD3797091EC74F9900E3B9ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD3797081EC74F9900E3B9ED /* GLAssetGridViewController.app */,
+				AD3797211EC74F9900E3B9ED /* GLAssetGridViewControllerTests.xctest */,
+				AD37972C1EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD37970A1EC74F9900E3B9ED /* GLAssetGridViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AD3797471EC7504E00E3B9ED /* UIView+CustomAutoLayout.h */,
+				AD3797481EC7504E00E3B9ED /* UIView+CustomAutoLayout.m */,
+				AD37973E1EC7503300E3B9ED /* GLAssetGridViewController.h */,
+				AD37973F1EC7503300E3B9ED /* GLAssetGridViewController.m */,
+				AD3797401EC7503300E3B9ED /* GLAssetViewBrowser.h */,
+				AD3797411EC7503300E3B9ED /* GLAssetViewBrowser.m */,
+				AD3797421EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.h */,
+				AD3797431EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m */,
+				AD37970E1EC74F9900E3B9ED /* AppDelegate.h */,
+				AD37970F1EC74F9900E3B9ED /* AppDelegate.m */,
+				AD3797111EC74F9900E3B9ED /* ViewController.h */,
+				AD3797121EC74F9900E3B9ED /* ViewController.m */,
+				AD3797141EC74F9900E3B9ED /* Main.storyboard */,
+				AD3797171EC74F9900E3B9ED /* Assets.xcassets */,
+				AD3797191EC74F9900E3B9ED /* LaunchScreen.storyboard */,
+				AD37971C1EC74F9900E3B9ED /* Info.plist */,
+				AD37970B1EC74F9900E3B9ED /* Supporting Files */,
+			);
+			path = GLAssetGridViewController;
+			sourceTree = "<group>";
+		};
+		AD37970B1EC74F9900E3B9ED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD37970C1EC74F9900E3B9ED /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AD3797241EC74F9900E3B9ED /* GLAssetGridViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				AD3797251EC74F9A00E3B9ED /* GLAssetGridViewControllerTests.m */,
+				AD3797271EC74F9A00E3B9ED /* Info.plist */,
+			);
+			path = GLAssetGridViewControllerTests;
+			sourceTree = "<group>";
+		};
+		AD37972F1EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AD3797301EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests.m */,
+				AD3797321EC74F9A00E3B9ED /* Info.plist */,
+			);
+			path = GLAssetGridViewControllerUITests;
+			sourceTree = "<group>";
+		};
+		B518A904D41D5B25B51D9946 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				99A8BB04136139CAEF788A2F /* Pods-GLAssetGridViewController.debug.xcconfig */,
+				DDE8D07B046A3BF1734A2B2E /* Pods-GLAssetGridViewController.release.xcconfig */,
+				FEEC24652ABC706D202CFB91 /* Pods-GLAssetGridViewControllerTests.debug.xcconfig */,
+				34558AE2B42C661714175D43 /* Pods-GLAssetGridViewControllerTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DD9AEE9CD2D728D33C2743F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42FE48E7065CFF4D67AB9ED4 /* libPods-GLAssetGridViewController.a */,
+				5CC24D7F09E11992107D657E /* libPods-GLAssetGridViewControllerTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD3797071EC74F9900E3B9ED /* GLAssetGridViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD3797351EC74F9A00E3B9ED /* Build configuration list for PBXNativeTarget "GLAssetGridViewController" */;
+			buildPhases = (
+				F42A821E259B202AC223D989 /* [CP] Check Pods Manifest.lock */,
+				AD3797041EC74F9900E3B9ED /* Sources */,
+				AD3797051EC74F9900E3B9ED /* Frameworks */,
+				AD3797061EC74F9900E3B9ED /* Resources */,
+				45F770FEDC436F379CF72282 /* [CP] Embed Pods Frameworks */,
+				0FEA848231EA9E5D1E36F947 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GLAssetGridViewController;
+			productName = GLAssetGridViewController;
+			productReference = AD3797081EC74F9900E3B9ED /* GLAssetGridViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AD3797201EC74F9900E3B9ED /* GLAssetGridViewControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD3797381EC74F9A00E3B9ED /* Build configuration list for PBXNativeTarget "GLAssetGridViewControllerTests" */;
+			buildPhases = (
+				28621F7EAF1A1974E032C15D /* [CP] Check Pods Manifest.lock */,
+				AD37971D1EC74F9900E3B9ED /* Sources */,
+				AD37971E1EC74F9900E3B9ED /* Frameworks */,
+				AD37971F1EC74F9900E3B9ED /* Resources */,
+				56C5C2B09DC37A0F514157B2 /* [CP] Embed Pods Frameworks */,
+				7A7521064A1EFE5B21E6D549 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD3797231EC74F9900E3B9ED /* PBXTargetDependency */,
+			);
+			name = GLAssetGridViewControllerTests;
+			productName = GLAssetGridViewControllerTests;
+			productReference = AD3797211EC74F9900E3B9ED /* GLAssetGridViewControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AD37972B1EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD37973B1EC74F9A00E3B9ED /* Build configuration list for PBXNativeTarget "GLAssetGridViewControllerUITests" */;
+			buildPhases = (
+				AD3797281EC74F9A00E3B9ED /* Sources */,
+				AD3797291EC74F9A00E3B9ED /* Frameworks */,
+				AD37972A1EC74F9A00E3B9ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD37972E1EC74F9A00E3B9ED /* PBXTargetDependency */,
+			);
+			name = GLAssetGridViewControllerUITests;
+			productName = GLAssetGridViewControllerUITests;
+			productReference = AD37972C1EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD3797001EC74F9900E3B9ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Yanci;
+				TargetAttributes = {
+					AD3797071EC74F9900E3B9ED = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 32URLK6K7Y;
+						ProvisioningStyle = Automatic;
+					};
+					AD3797201EC74F9900E3B9ED = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 32URLK6K7Y;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AD3797071EC74F9900E3B9ED;
+					};
+					AD37972B1EC74F9A00E3B9ED = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 32URLK6K7Y;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AD3797071EC74F9900E3B9ED;
+					};
+				};
+			};
+			buildConfigurationList = AD3797031EC74F9900E3B9ED /* Build configuration list for PBXProject "GLAssetGridViewController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD3796FF1EC74F9900E3B9ED;
+			productRefGroup = AD3797091EC74F9900E3B9ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD3797071EC74F9900E3B9ED /* GLAssetGridViewController */,
+				AD3797201EC74F9900E3B9ED /* GLAssetGridViewControllerTests */,
+				AD37972B1EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD3797061EC74F9900E3B9ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD37971B1EC74F9900E3B9ED /* LaunchScreen.storyboard in Resources */,
+				AD3797181EC74F9900E3B9ED /* Assets.xcassets in Resources */,
+				AD3797161EC74F9900E3B9ED /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD37971F1EC74F9900E3B9ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD37972A1EC74F9A00E3B9ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0FEA848231EA9E5D1E36F947 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GLAssetGridViewController/Pods-GLAssetGridViewController-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28621F7EAF1A1974E032C15D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		45F770FEDC436F379CF72282 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GLAssetGridViewController/Pods-GLAssetGridViewController-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56C5C2B09DC37A0F514157B2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GLAssetGridViewControllerTests/Pods-GLAssetGridViewControllerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A7521064A1EFE5B21E6D549 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GLAssetGridViewControllerTests/Pods-GLAssetGridViewControllerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F42A821E259B202AC223D989 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD3797041EC74F9900E3B9ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD3797451EC7503300E3B9ED /* GLAssetViewBrowser.m in Sources */,
+				AD3797131EC74F9900E3B9ED /* ViewController.m in Sources */,
+				AD3797461EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m in Sources */,
+				AD3797101EC74F9900E3B9ED /* AppDelegate.m in Sources */,
+				AD3797441EC7503300E3B9ED /* GLAssetGridViewController.m in Sources */,
+				AD3797491EC7504E00E3B9ED /* UIView+CustomAutoLayout.m in Sources */,
+				AD37970D1EC74F9900E3B9ED /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD37971D1EC74F9900E3B9ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD3797261EC74F9A00E3B9ED /* GLAssetGridViewControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD3797281EC74F9A00E3B9ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD3797311EC74F9A00E3B9ED /* GLAssetGridViewControllerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD3797231EC74F9900E3B9ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD3797071EC74F9900E3B9ED /* GLAssetGridViewController */;
+			targetProxy = AD3797221EC74F9900E3B9ED /* PBXContainerItemProxy */;
+		};
+		AD37972E1EC74F9A00E3B9ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD3797071EC74F9900E3B9ED /* GLAssetGridViewController */;
+			targetProxy = AD37972D1EC74F9A00E3B9ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AD3797141EC74F9900E3B9ED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD3797151EC74F9900E3B9ED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AD3797191EC74F9900E3B9ED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD37971A1EC74F9900E3B9ED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD3797331EC74F9A00E3B9ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD3797341EC74F9A00E3B9ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD3797361EC74F9A00E3B9ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99A8BB04136139CAEF788A2F /* Pods-GLAssetGridViewController.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 32URLK6K7Y;
+				INFOPLIST_FILE = GLAssetGridViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.xyeasycarousel.GLAssetGridViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AD3797371EC74F9A00E3B9ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDE8D07B046A3BF1734A2B2E /* Pods-GLAssetGridViewController.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 32URLK6K7Y;
+				INFOPLIST_FILE = GLAssetGridViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.xyeasycarousel.GLAssetGridViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AD3797391EC74F9A00E3B9ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FEEC24652ABC706D202CFB91 /* Pods-GLAssetGridViewControllerTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 32URLK6K7Y;
+				INFOPLIST_FILE = GLAssetGridViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.xyeasycarousel.GLAssetGridViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GLAssetGridViewController.app/GLAssetGridViewController";
+			};
+			name = Debug;
+		};
+		AD37973A1EC74F9A00E3B9ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34558AE2B42C661714175D43 /* Pods-GLAssetGridViewControllerTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 32URLK6K7Y;
+				INFOPLIST_FILE = GLAssetGridViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.xyeasycarousel.GLAssetGridViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GLAssetGridViewController.app/GLAssetGridViewController";
+			};
+			name = Release;
+		};
+		AD37973C1EC74F9A00E3B9ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 32URLK6K7Y;
+				INFOPLIST_FILE = GLAssetGridViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.xyeasycarousel.GLAssetGridViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GLAssetGridViewController;
+			};
+			name = Debug;
+		};
+		AD37973D1EC74F9A00E3B9ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 32URLK6K7Y;
+				INFOPLIST_FILE = GLAssetGridViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.xyeasycarousel.GLAssetGridViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GLAssetGridViewController;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD3797031EC74F9900E3B9ED /* Build configuration list for PBXProject "GLAssetGridViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD3797331EC74F9A00E3B9ED /* Debug */,
+				AD3797341EC74F9A00E3B9ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD3797351EC74F9A00E3B9ED /* Build configuration list for PBXNativeTarget "GLAssetGridViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD3797361EC74F9A00E3B9ED /* Debug */,
+				AD3797371EC74F9A00E3B9ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD3797381EC74F9A00E3B9ED /* Build configuration list for PBXNativeTarget "GLAssetGridViewControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD3797391EC74F9A00E3B9ED /* Debug */,
+				AD37973A1EC74F9A00E3B9ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD37973B1EC74F9A00E3B9ED /* Build configuration list for PBXNativeTarget "GLAssetGridViewControllerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD37973C1EC74F9A00E3B9ED /* Debug */,
+				AD37973D1EC74F9A00E3B9ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AD3797001EC74F9900E3B9ED /* Project object */;
+}
