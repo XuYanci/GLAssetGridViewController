@@ -316,6 +316,7 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
 - (void)_reloadDataIfNeed {
     if (_needsReload) {
         [self reloadData];
+        _needsReload = NO;
     }
 }
 
@@ -342,9 +343,7 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
     
     allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:false]];
     _allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
-    [self resetCachedAssets];
-    
-
+    [self requestAuthorzationStatus];
     
     self.collectionView.userInteractionEnabled = NO;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -363,6 +362,45 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
 
 #pragma mark - Asset Caching
 
+- (void)requestAuthorzationStatus {
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    
+    switch (status) {
+        case PHAuthorizationStatusAuthorized:
+            [self resetCachedAssets];
+            break;
+        case PHAuthorizationStatusDenied:
+        case PHAuthorizationStatusRestricted: {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tips" message:@"Photo auth status deny or restricted,please auth before" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"Confirm"
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+            break;
+        case PHAuthorizationStatusNotDetermined: {
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied) {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tips" message:@"Photo auth status deny or restricted,please auth before" preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:@"Confirm"
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:nil]];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    return;
+                }
+                else if(status == PHAuthorizationStatusAuthorized) {
+                    [self resetCachedAssets];
+                }
+            }];
+        }
+            break;
+        default:
+            break;
+    }
+    
+}
+
 - (void)resetCachedAssets {
     
     /** Reset selected assets */
@@ -373,7 +411,6 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
             [self.selectedAddsets setObject:selectAsset forKey:obj.localIdentifier];
         }
     }];
-    
     
     NSMutableArray *assets = [NSMutableArray array];
     [self.selectedAddsets.allValues enumerateObjectsUsingBlock:^(SelectAsset * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -395,6 +432,14 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
 }
 
 - (void)updateCachedAssets {
+    
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    
+    if (status == PHAuthorizationStatusDenied
+        || status == PHAuthorizationStatusRestricted
+        || status == PHAuthorizationStatusNotDetermined) {
+        return;
+    }
     
     CGRect visibleRect = CGRectMake(self.collectionView.contentOffset.x,
                                     self.collectionView.contentOffset.y,

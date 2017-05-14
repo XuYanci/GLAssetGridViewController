@@ -266,8 +266,8 @@
 				TargetAttributes = {
 					AD3797071EC74F9900E3B9ED = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 32URLK6K7Y;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = YM2JKQV767;
+						ProvisioningStyle = Manual;
 					};
 					AD3797201EC74F9900E3B9ED = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -509,7 +509,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dong ZHANG (GVLQ896DY2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dong ZHANG (GVLQ896DY2)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -557,7 +558,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dong ZHANG (GVLQ896DY2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -583,11 +585,14 @@
 			baseConfigurationReference = 99A8BB04136139CAEF788A2F /* Pods-GLAssetGridViewController.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 32URLK6K7Y;
+				DEVELOPMENT_TEAM = YM2JKQV767;
 				INFOPLIST_FILE = GLAssetGridViewController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.xyeasycarousel.GLAssetGridViewController;
+				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.66;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c35a670f-a15e-45e6-a434-e48eba9fdeb7";
+				PROVISIONING_PROFILE_SPECIFIER = com.caigoutong.66;
 			};
 			name = Debug;
 		};
@@ -596,11 +601,15 @@
 			baseConfigurationReference = DDE8D07B046A3BF1734A2B2E /* Pods-GLAssetGridViewController.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 32URLK6K7Y;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = YM2JKQV767;
 				INFOPLIST_FILE = GLAssetGridViewController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.xyeasycarousel.GLAssetGridViewController;
+				PRODUCT_BUNDLE_IDENTIFIER = com.caigoutong.66;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c35a670f-a15e-45e6-a434-e48eba9fdeb7";
+				PROVISIONING_PROFILE_SPECIFIER = com.caigoutong.66;
 			};
 			name = Release;
 		};
