@@ -330,32 +330,37 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
  重载数据
  */
 - (void)reloadData {
-    PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc]init];
-    
-    if (self.pickerType == GLAssetGridType_Video) {
-        allPhotosOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeVideo];
+    if ([PHPhotoLibrary authorizationStatus] != PHAuthorizationStatusAuthorized) {
+        [self requestAuthorzationStatus];
+    }
+    else {
+        PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc]init];
         
-    }
-    else if(self.pickerType == GLAssetGridType_Picture) {
-        allPhotosOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
+        if (self.pickerType == GLAssetGridType_Video) {
+            allPhotosOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeVideo];
+            
+        }
+        else if(self.pickerType == GLAssetGridType_Picture) {
+            allPhotosOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
+            
+        }
         
-    }
-    
-    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:false]];
-    _allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
-    [self requestAuthorzationStatus];
-    
-    self.collectionView.userInteractionEnabled = NO;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self updateCachedAssets];
-        self.collectionView.userInteractionEnabled = YES;
-    });
-    
-    if (self.pickerType == GLAssetGridType_Picture) {
-        self.title = @"全部相册";
-    }
-    else if(self.pickerType == GLAssetGridType_Video) {
-        self.title = @"全部视频";
+        allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:false]];
+        _allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
+
+        self.collectionView.userInteractionEnabled = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self updateCachedAssets];
+            [self.collectionView reloadData];
+            self.collectionView.userInteractionEnabled = YES;
+        });
+        
+        if (self.pickerType == GLAssetGridType_Picture) {
+            self.title = @"全部相册";
+        }
+        else if(self.pickerType == GLAssetGridType_Video) {
+            self.title = @"全部视频";
+        }
     }
 }
 
@@ -367,7 +372,7 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
     
     switch (status) {
         case PHAuthorizationStatusAuthorized:
-            [self resetCachedAssets];
+            [self reloadData];
             break;
         case PHAuthorizationStatusDenied:
         case PHAuthorizationStatusRestricted: {
@@ -390,7 +395,7 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
                     return;
                 }
                 else if(status == PHAuthorizationStatusAuthorized) {
-                    [self resetCachedAssets];
+                    [self reloadData];
                 }
             }];
         }
