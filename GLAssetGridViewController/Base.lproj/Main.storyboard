@@ -29,21 +29,10 @@
                                     <action selector="promptPic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3db-ZA-nRW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19b-Ng-cYR">
-                                <rect key="frame" x="144" y="411" width="86" height="34"/>
-                                <state key="normal" title="PromptVid">
-                                    <color key="titleColor" red="0.48897761109999999" green="0.69236594439999999" blue="0.086282096799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="promptVid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nwn-Iy-Zrm"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="g4z-WO-AKx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Ii-eh-xEy"/>
-                            <constraint firstItem="19b-Ng-cYR" firstAttribute="top" secondItem="g4z-WO-AKx" secondAttribute="bottom" constant="60.5" id="gsD-1x-lAt"/>
-                            <constraint firstItem="19b-Ng-cYR" firstAttribute="centerX" secondItem="g4z-WO-AKx" secondAttribute="centerX" id="pY7-dE-3w8"/>
                             <constraint firstItem="g4z-WO-AKx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xOP-on-jGl"/>
                         </constraints>
                     </view>
