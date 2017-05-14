@@ -26,12 +26,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (IBAction)prompt:(id)sender {
+- (IBAction)promptPic:(id)sender {
     GLAssetGridViewController *assetGridVC = [[GLAssetGridViewController alloc]init];
     assetGridVC.pickerType = GLAssetGridType_Picture;
     [self presentViewController:
      [[UINavigationController alloc]initWithRootViewController:assetGridVC] animated:YES completion:nil];
+
 }
+
+- (IBAction)promptVid:(id)sender {
+    GLAssetGridViewController *assetGridVC = [[GLAssetGridViewController alloc]init];
+    assetGridVC.pickerType = GLAssetGridType_Video;
+    [self presentViewController:
+     [[UINavigationController alloc]initWithRootViewController:assetGridVC] animated:YES completion:nil];
+
+}
+
 
 @end

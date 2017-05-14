@@ -171,14 +171,24 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
 
 #pragma mark - delegate
 
-
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0 && self.pickerType == GLAssetGridType_Picture) {
         NSLog(@"take video");
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tips" message:@"Take Photo" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Confirm"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+
     }
     else if(indexPath.row == 0 && self.pickerType == GLAssetGridType_Video) {
         NSLog(@"take pic");
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tips" message:@"Take Video" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Confirm"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+
     }
     else {
         GLAssetViewBrowser *assetViewController = [[GLAssetViewBrowser alloc]init];
