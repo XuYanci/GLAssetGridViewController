@@ -7,7 +7,6 @@
 //
 
 #import "GLPickPicVidViewCollectionViewCell.h"
-#import "UIView+CustomAutoLayout.h"
 #import "MBProgressHUD+GL.h"
 static NSUInteger const kPickMaxPictureCount = 4; /* 允许选择相片最大数 */
 static NSUInteger const kPickMaxVideoCount = 1;   /* 允许选择视频最大数 */
@@ -40,22 +39,20 @@ static NSUInteger const kPickMaxVideoCount = 1;   /* 允许选择视频最大数
     
     if (self.pickPicVidCVType == GLPickPicVidCVType_TakePic) {
         self.tickBtn.hidden = YES;
-        [self.pictureImageView sizeWith:CGSizeMake(30, 30)];
-        [self.pictureImageView alignParentCenter];
+        [self.pictureImageView setFrame:CGRectMake(0, 0, 30, 30)];
+        self.pictureImageView.center = self.pictureImageView.superview.center;
         self.contentView.backgroundColor = [UIColor yellowColor];
     }
     else if(self.pickPicVidCVType == GLPickPicVidCVType_TakeVid) {
         self.tickBtn.hidden = YES;
-        [self.pictureImageView sizeWith:CGSizeMake(30, 30)];
-        [self.pictureImageView alignParentCenter];
+        [self.pictureImageView setFrame:CGRectMake(0, 0, 30, 30)];
+        self.pictureImageView.center = self.pictureImageView.superview.center;
         self.contentView.backgroundColor = [UIColor yellowColor];
     }
     else {
         self.tickBtn.hidden = NO;
         self.pictureImageView.frame = self.contentView.bounds;
-        [self.tickBtn sizeWith:CGSizeMake(30, 30)];
-        [self.tickBtn alignParentRightWithMargin:10.0];
-        [self.tickBtn alignParentTopWithMargin:10.0];
+        self.tickBtn.frame = CGRectMake(CGRectGetWidth(self.tickBtn.superview.frame) - 10.0 - 30, 10, 30, 30);
         self.contentView.backgroundColor = [UIColor clearColor];
     }
 }

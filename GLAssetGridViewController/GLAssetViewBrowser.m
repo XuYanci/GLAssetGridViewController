@@ -122,6 +122,18 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 
 #pragma mark - user events
 #pragma mark - functions
+- (void)commonInit {
+    
+    /** Add blur */
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    effectView.frame = self.bounds;
+    [self addSubview:effectView];
+    _effectView = effectView;
+    
+    /** Add collectionview */
+    [self addSubview:self.collectionView];
+}
 
 - (void)show {
     [[UIApplication sharedApplication].keyWindow addSubview:self];
@@ -144,10 +156,6 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
         [self removeFromSuperview];
     }];
 }
-
-
-
-
 
 - (void)showFromOriginRect:(CGRect)originRect
                  thumbnail:(UIImage *)thumbnail
@@ -286,18 +294,6 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     return imageFrame;
 }
 
-- (void)commonInit {
-    
-    /** Add blur */
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    effectView.frame = self.bounds;
-    [self addSubview:effectView];
-    _effectView = effectView;
-    
-    /** Add collectionview */
-    [self addSubview:self.collectionView];
-}
 
 - (void)setNeedsReload {
     _needsReload = YES;

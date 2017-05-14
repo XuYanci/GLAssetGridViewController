@@ -98,8 +98,6 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
     cell.delegate = self;
     cell.dataSource = self;
     
-    
-    
     if (self.pickerType == GLAssetGridType_Picture) {
         [cell setPickPicVidCVType:GLPickPicVidCVType_Pic];
         if (indexPath.row == 0) {

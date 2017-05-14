@@ -23,9 +23,8 @@ typedef void(^GLAssetViewImageAsyncCallback)(UIImage *image);
 @protocol GLAssetViewControllerDataSource <NSObject>
 @required
 - (NSUInteger)numberOfItemsInGLAssetViewController:(GLAssetViewBrowser *)assetViewController;
-- (UIImage *)imageForItemInGLAssetViewControllerAtIndex:(NSUInteger)itemIndex;
-
 @optional
+- (UIImage *)imageForItemInGLAssetViewControllerAtIndex:(NSUInteger)itemIndex;
 - (void)asyncImageForItemInGLAssetViewControllerAtIndex:(NSUInteger)itemIndex imageAsyncCallback:(GLAssetViewImageAsyncCallback)callback;
 @end
 
