@@ -7,6 +7,8 @@
 //
 
 #import "GLAssetViewBrowser.h"
+#import <AVFoundation/AVFoundation.h>
+#import "GLAssetPlayBackView.h"
 
 @interface GLAssetCollectionViewCell : UICollectionViewCell
 @property (nonatomic,strong)UIImageView *imageView;
@@ -55,6 +57,15 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     CGRect _fromRect;
     UIImage *_thumbnail;
     NSUInteger _startShowIndex;
+    
+    /** AVPlayer relate items */
+    NSURL *mURL;
+    AVPlayer *mPlayer;
+    AVPlayerItem *mPlayerItem;
+    GLAssetPlayBackView *mPlaybackView;
+    BOOL isSeeking;
+    id mTimeObserver;
+    BOOL seektToZeroBeforePlay;
 }
 
 
