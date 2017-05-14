@@ -10,6 +10,8 @@
 #import "GLAssetGridViewController.h"
 #import "GLPickPicVidViewCollectionViewCell.h"
 #import "GLAssetViewBrowser.h"
+#import "GLAssetPlayBackView.h"
+
 ////////////////////////// Select Asset  //////////////////////////
 @implementation SelectAsset
 @end
@@ -34,12 +36,21 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
 @implementation GLAssetGridViewController {
     BOOL _needsReload;  /*! 需要重载 */
     struct {
-
     }_datasourceHas;    /*! 数据源存在标识 */
     struct {
         unsigned  didPickAssets:1;
     }_delegateHas;      /*! 数据委托存在标识 */
+    
     NSUInteger _selectedCount;
+    
+    /** AVPlayer relate items */
+    NSURL *mURL;
+    AVPlayer *mPlayer;
+    AVPlayerItem *mPlayerItem;
+    GLAssetPlayBackView *mPlaybackView;
+    BOOL isSeeking;
+    id mTimeObserver;
+    BOOL seektToZeroBeforePlay;
 }
 
 #pragma mark - life cycle
