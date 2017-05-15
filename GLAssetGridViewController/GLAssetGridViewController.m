@@ -103,7 +103,6 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
     // Dispose of any resources that can be recreated.
 }
 
- 
 
 #pragma mark - datasource
 

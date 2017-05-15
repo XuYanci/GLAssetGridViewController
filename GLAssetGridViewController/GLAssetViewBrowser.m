@@ -81,6 +81,7 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     id mTimeObserver;
     BOOL seektToZeroBeforePlay;
     
+    /** Pan gesture for dismiss */
     UIPanGestureRecognizer *_swipeVerGestureRecognizer;
     CGPoint _firstPoint;
     CGPoint _prePoint;
@@ -155,17 +156,7 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     /** Swipe finish here we recover state*/
     if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         if (fabs(_nowPoint.y - _firstPoint.y) >= 200.0) {
-            CGRect originRect = CGRectZero;
-            if (_delegateHas.imageRectForItemAtIndex) {
-                originRect = [_delegate imageRectForItemInGLAssetViewControllerAtIndex:
-                              [[self.collectionView indexPathsForVisibleItems]lastObject].row];
-            }
-            if (CGRectEqualToRect(originRect, CGRectZero)) {
-                [self dismiss];
-            }
-            else {
-                [self dismissToOriginRect:originRect];
-            }
+            [self dismiss];
         }
         else {
             _nowPoint  = CGPointZero;
