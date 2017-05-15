@@ -225,9 +225,6 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 }
 
 - (void)dismiss {
- 
-    self.effectView.alpha = 1.0;
-    self.collectionView.alpha = 1.0;
     [UIView animateWithDuration:0.5 animations:^{
         self.effectView.alpha = 0.0;
         self.collectionView.alpha = 0.0;
