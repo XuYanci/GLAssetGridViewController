@@ -1,7 +1,7 @@
 # GLAssetGridViewController
 
 ![Build Status](https://travis-ci.org/msaps/MSSTabbedPageViewController.svg?branch=develop)
-![converage](	https://img.shields.io/sonar/http/sonar.qatools.ru/ru.yandex.qatools.allure:allure-core/coverage.svg)
+![converage](https://img.shields.io/sonar/http/sonar.qatools.ru/ru.yandex.qatools.allure:allure-core/coverage.svg)
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 GLAssetGridViewController is an asset view controller, like an picture picker and video picker , also has an browser .
