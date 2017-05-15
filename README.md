@@ -41,16 +41,18 @@ Now they are not available through cocoapods now. you can clone the repo and add
 <p><p>
 
 ## Usage
+
 因为它不是一个公用控件，你可能需要根据你的需求修改代码。
 
 Beacuse it is not an public common control, you need to verify the code as you need. 
 
-使用 GLAssetGridViewController，需要创建一个GLAssetGridViewController的实例，根据你的需要设置PickerType (GLAssetGridType_Picture,GLAssetGridType_Video)。
+使用 GLAssetGridViewController，需要创建一个GLAssetGridViewController的实例，根据你的需要设置PickerType 
+(GLAssetGridType_Picture,GLAssetGridType_Video)。
 
 To Use GLAssetGridViewController, just create an instance of GLAssetGridViewController，and set the pickerType (GLAssetGridType_Picture,GLAssetGridType_Video) as you need. 
 
-
 使用GLAssetViewBrowser，需要创建一个GLAssetViewBrowser的实例，然后实现以下数据源:
+
 To Use GLAssetViewBrowser, just create and instance of GLAssetViewBrowser,and implement the datasource below: 
 
 ```
