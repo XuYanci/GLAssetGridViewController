@@ -8,8 +8,10 @@
 
 #import "GLPickPicVidViewCollectionViewCell.h"
 #import "MBProgressHUD+GL.h"
+
 static NSUInteger const kPickMaxPictureCount = 4; /* 允许选择相片最大数 */
 static NSUInteger const kPickMaxVideoCount = 1;   /* 允许选择视频最大数 */
+
 
 @interface GLPickPicVidViewCollectionViewCell()
 @property (nonatomic,strong) UIImageView *pictureImageView;
