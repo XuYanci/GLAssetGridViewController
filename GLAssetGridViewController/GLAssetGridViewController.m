@@ -339,7 +339,6 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
     self.collectionView.frame = self.view.bounds;
 }
 
-
 /**
  重载数据
  */
