@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-
+#import <AVFoundation/AVFoundation.h>
 
 typedef enum : NSUInteger {
     GLAssetType_Picture,
@@ -31,7 +31,7 @@ typedef enum : NSUInteger {
 
 
 typedef void(^GLAssetViewImageAsyncCallback)(UIImage *image);
-
+typedef void(^GLAssetViewVideoAsyncCallback)(AVAsset *asset);
 
 @class GLAssetViewBrowser;
 @protocol GLAssetViewControllerDataSource <NSObject>
@@ -39,7 +39,10 @@ typedef void(^GLAssetViewImageAsyncCallback)(UIImage *image);
 - (NSUInteger)numberOfItemsInGLAssetViewController:(GLAssetViewBrowser *)assetViewController;
 @optional
 - (UIImage *)imageForItemInGLAssetViewControllerAtIndex:(NSUInteger)itemIndex;
-- (void)asyncImageForItemInGLAssetViewControllerAtIndex:(NSUInteger)itemIndex imageAsyncCallback:(GLAssetViewImageAsyncCallback)callback;
+- (void)asyncImageForItemInGLAssetViewControllerAtIndex:(NSUInteger)itemIndex
+                                     imageAsyncCallback:(GLAssetViewImageAsyncCallback)callback;
+- (void)asyncVideoForItemInGLAssetViewControllerAtIndex:(NSUInteger)itemIndex
+                                     videoAsyncCallback:(GLAssetViewVideoAsyncCallback)callback;
 @end
 
 @protocol GLAssetViewControllerDelegate <NSObject>

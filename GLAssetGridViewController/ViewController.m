@@ -33,6 +33,13 @@
 
 }
 
+- (IBAction)promptVid:(id)sender{
+    GLAssetGridViewController *assetGridVC = [[GLAssetGridViewController alloc]init];
+    assetGridVC.pickerType = GLAssetGridType_Video;
+    [self presentViewController:
+     [[UINavigationController alloc]initWithRootViewController:assetGridVC] animated:YES completion:nil];
+}
+
 //- (IBAction)promptVid:(id)sender {
 //    GLAssetGridViewController *assetGridVC = [[GLAssetGridViewController alloc]init];
 //    assetGridVC.pickerType = GLAssetGridType_Video;

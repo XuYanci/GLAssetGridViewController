@@ -11,5 +11,6 @@
 @interface ViewController : UIViewController
 
 - (IBAction)promptPic:(id)sender;
+- (IBAction)promptVid:(id)sender;
 @end
 

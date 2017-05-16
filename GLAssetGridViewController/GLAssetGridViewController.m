@@ -24,7 +24,7 @@
 #import "GLAssetGridViewController.h"
 #import "GLPickPicVidViewCollectionViewCell.h"
 #import "GLAssetViewBrowser.h"
-#import "GLAssetPlayBackView.h"
+ 
 
 ////////////////////////// Select Asset  //////////////////////////
 @implementation SelectAsset
@@ -170,6 +170,13 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
                               resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                                   callback(result);
                               }];
+}
+
+- (void)asyncVideoForItemInGLAssetViewControllerAtIndex:(NSUInteger)itemIndex videoAsyncCallback:(GLAssetViewVideoAsyncCallback)callback {
+    PHAsset *asset = [self.allPhotos objectAtIndex:itemIndex];
+    [self.imageManager requestAVAssetForVideo:asset options:nil resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+        callback(asset);
+    }];
 }
 
 #pragma mark - GLAssetViewControllerDelegate

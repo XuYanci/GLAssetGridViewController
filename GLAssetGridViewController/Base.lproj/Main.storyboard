@@ -29,10 +29,21 @@
                                     <action selector="promptPic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3db-ZA-nRW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bt-6T-HSf">
+                                <rect key="frame" x="144.5" y="370.5" width="86" height="34"/>
+                                <state key="normal" title="PromptVid">
+                                    <color key="titleColor" red="0.48897761106491089" green="0.69236594438552856" blue="0.086282096803188324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="promptVid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Pa-xB-5b6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="g4z-WO-AKx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Ii-eh-xEy"/>
+                            <constraint firstItem="6bt-6T-HSf" firstAttribute="top" secondItem="g4z-WO-AKx" secondAttribute="bottom" constant="20" id="5Zg-uN-PFF"/>
+                            <constraint firstItem="6bt-6T-HSf" firstAttribute="centerX" secondItem="g4z-WO-AKx" secondAttribute="centerX" id="Ufb-HC-1Sd"/>
                             <constraint firstItem="g4z-WO-AKx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xOP-on-jGl"/>
                         </constraints>
                     </view>
