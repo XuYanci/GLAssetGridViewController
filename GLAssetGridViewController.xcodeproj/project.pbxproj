@@ -22,6 +22,8 @@
 		AD3797461EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3797431EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m */; };
 		AD37974C1EC7522B00E3B9ED /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37974A1EC7522B00E3B9ED /* Photos.framework */; };
 		AD3797501EC7F2FA00E3B9ED /* MBProgressHUD+GL.m in Sources */ = {isa = PBXBuildFile; fileRef = AD37974F1EC7F2FA00E3B9ED /* MBProgressHUD+GL.m */; };
+		ADC0DBAE1ECD9DEB002859A9 /* GLAssetPlayBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DBAD1ECD9DEB002859A9 /* GLAssetPlayBackView.m */; };
+		ADC0DBB31ECDAD47002859A9 /* GLAssetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DBB21ECDAD47002859A9 /* GLAssetCollectionViewCell.m */; };
 		B18644F4FA59876B74F460D4 /* libPods-GLAssetGridViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FE48E7065CFF4D67AB9ED4 /* libPods-GLAssetGridViewController.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,10 @@
 		AD37974B1EC7522B00E3B9ED /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		AD37974E1EC7F2FA00E3B9ED /* MBProgressHUD+GL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+GL.h"; sourceTree = "<group>"; };
 		AD37974F1EC7F2FA00E3B9ED /* MBProgressHUD+GL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+GL.m"; sourceTree = "<group>"; };
+		ADC0DBAC1ECD9DEB002859A9 /* GLAssetPlayBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAssetPlayBackView.h; sourceTree = "<group>"; };
+		ADC0DBAD1ECD9DEB002859A9 /* GLAssetPlayBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAssetPlayBackView.m; sourceTree = "<group>"; };
+		ADC0DBB11ECDAD47002859A9 /* GLAssetCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAssetCollectionViewCell.h; sourceTree = "<group>"; };
+		ADC0DBB21ECDAD47002859A9 /* GLAssetCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAssetCollectionViewCell.m; sourceTree = "<group>"; };
 		DDE8D07B046A3BF1734A2B2E /* Pods-GLAssetGridViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLAssetGridViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLAssetGridViewController/Pods-GLAssetGridViewController.release.xcconfig"; sourceTree = "<group>"; };
 		FEEC24652ABC706D202CFB91 /* Pods-GLAssetGridViewControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLAssetGridViewControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GLAssetGridViewControllerTests/Pods-GLAssetGridViewControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,10 +144,14 @@
 				AD37973F1EC7503300E3B9ED /* GLAssetGridViewController.m */,
 				AD3797401EC7503300E3B9ED /* GLAssetViewBrowser.h */,
 				AD3797411EC7503300E3B9ED /* GLAssetViewBrowser.m */,
-				AD29C73C1ECAB5EA0061175B /* GLAssetPlaybackViewController.h */,
-				AD29C73D1ECAB5EA0061175B /* GLAssetPlaybackViewController.m */,
+				ADC0DBB11ECDAD47002859A9 /* GLAssetCollectionViewCell.h */,
+				ADC0DBB21ECDAD47002859A9 /* GLAssetCollectionViewCell.m */,
 				AD3797421EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.h */,
 				AD3797431EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m */,
+				AD29C73C1ECAB5EA0061175B /* GLAssetPlaybackViewController.h */,
+				AD29C73D1ECAB5EA0061175B /* GLAssetPlaybackViewController.m */,
+				ADC0DBAC1ECD9DEB002859A9 /* GLAssetPlayBackView.h */,
+				ADC0DBAD1ECD9DEB002859A9 /* GLAssetPlayBackView.m */,
 				AD37970E1EC74F9900E3B9ED /* AppDelegate.h */,
 				AD37970F1EC74F9900E3B9ED /* AppDelegate.m */,
 				AD3797111EC74F9900E3B9ED /* ViewController.h */,
@@ -438,9 +448,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADC0DBB31ECDAD47002859A9 /* GLAssetCollectionViewCell.m in Sources */,
 				AD3797451EC7503300E3B9ED /* GLAssetViewBrowser.m in Sources */,
 				AD3797131EC74F9900E3B9ED /* ViewController.m in Sources */,
 				AD3797461EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m in Sources */,
+				ADC0DBAE1ECD9DEB002859A9 /* GLAssetPlayBackView.m in Sources */,
 				AD29C73E1ECAB5EA0061175B /* GLAssetPlaybackViewController.m in Sources */,
 				AD3797101EC74F9900E3B9ED /* AppDelegate.m in Sources */,
 				AD3797501EC7F2FA00E3B9ED /* MBProgressHUD+GL.m in Sources */,

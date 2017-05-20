@@ -31,7 +31,7 @@ typedef enum : NSUInteger {
 
 
 typedef void(^GLAssetViewImageAsyncCallback)(UIImage *image);
-typedef void(^GLAssetViewVideoAsyncCallback)(AVAsset *asset);
+typedef void(^GLAssetViewVideoAsyncCallback)(NSURL *assetUrl);
 
 @class GLAssetViewBrowser;
 @protocol GLAssetViewControllerDataSource <NSObject>

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D9B87974B8AB052A20743055832DE883'
+               BlueprintIdentifier = '8A63404DE77F900557B1E3A52A89B600'
                BlueprintName = 'Pods-GLAssetGridViewController'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-GLAssetGridViewController.a'>

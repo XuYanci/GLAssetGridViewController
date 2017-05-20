@@ -7,7 +7,43 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLAssetPlayBackView.h"
+@protocol GLAssetPlaybackViewControllerDataSource <NSObject>
 
-@interface GLAssetPlaybackViewController : UIViewController
+@end
+
+@protocol GLAssetPlaybackViewControllerDelegate <NSObject>
+
+@end
+
+@class GLAssetPlaybackContainer;
+@interface GLAssetPlaybackViewController : UIViewController {
+    float mRestoreAfterScrubbingRate;
+    BOOL seekToZeroBeforePlay;
+    id mTimeObserver;
+    BOOL isSeeking;
+    
+    NSURL* mURL;
+    AVPlayer* mPlayer;
+    AVPlayerItem * mPlayerItem;
+    GLAssetPlayBackView* mPlaybackView;
+}
+@property (nonatomic,strong)UIButton *playBtn;
+@property (nonatomic,strong)UISlider *timeSlider;
+@property (nonatomic,strong)UILabel *currentTimeLabel;
+@property (nonatomic,strong)UILabel *leftTimeLabel;
+@property (nonatomic,strong)UIButton *fullScreenBtn;
+
+@property (nonatomic,strong)UIView *container;
+@property (nonatomic,strong)GLAssetPlaybackContainer *toolbar;
+@property (nonatomic,strong)GLAssetPlayBackView *mPlaybackView;
+@property (nonatomic, copy) NSURL* URL;
+@property (readwrite, strong, setter=setPlayer:, getter=player) AVPlayer* mPlayer;
+@property (strong) AVPlayerItem* mPlayerItem;
+
+@property (nonatomic,weak)id<GLAssetPlaybackViewControllerDataSource>dataSource;
+@property (nonatomic,weak)id<GLAssetPlaybackViewControllerDelegate>delegate;
+
+
 
 @end

@@ -9,6 +9,7 @@ inhibit_all_warnings!
 def pods
  
     pod 'MBProgressHUD', '~> 0.9.2'          # 提示框
+    pod 'Masonry', '~> 1.0.2'
 end
 
 target 'GLAssetGridViewController' do

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <AVFoundation/AVFoundation.h>
 @protocol GLPickPicVidViewCollectionViewCellDataSource <NSObject>
 - (NSUInteger)glPickPicVideViewCVCNumberOfSelectedItems;
 @end
@@ -30,6 +30,7 @@ typedef enum : NSUInteger {
 @property (nonatomic,assign) id<GLPickPicVidViewCollectionViewCellDataSource>dataSource;
 @property (nonatomic,assign) GLPickPicVidCVType pickPicVidCVType;
 @property (nonatomic,strong) UIImage *image;
+ 
 
 - (void)setTickBtnSelected:(BOOL)selected;
 @end

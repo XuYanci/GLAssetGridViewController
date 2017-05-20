@@ -22,34 +22,7 @@
 
 #import "GLAssetViewBrowser.h"
 #import <AVFoundation/AVFoundation.h>
-
-
-@interface GLAssetCollectionViewCell : UICollectionViewCell
-@property (nonatomic,strong)UIImageView *imageView;
-
-@end
-
-@implementation GLAssetCollectionViewCell
-
-- (void)layoutSubviews {
-    self.imageView.frame = self.contentView.bounds;
- 
-    [super layoutSubviews];
-}
-
-- (UIImageView *)imageView {
-    if (!_imageView) {
-        _imageView = [[UIImageView alloc]init];
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.contentView addSubview:_imageView];
-    }
-    return _imageView;
-}
-
-
-
-@end
-
+#import "GLAssetCollectionViewCell.h"
 
 static NSString *const kCellIdentifier = @"cellIdentifier";
 
@@ -81,6 +54,7 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     
     /** Pan gesture for dismiss */
     UIPanGestureRecognizer *_swipeVerGestureRecognizer;
+    UITapGestureRecognizer *_tapGestureRecognizer;
     CGPoint _firstPoint;
     CGPoint _prePoint;
     CGPoint _nowPoint;
@@ -119,19 +93,22 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"%s indexPath.row = %ld",__func__,indexPath.row);
     GLAssetCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     if (_datasourceHas.imageForItem) {
         cell.imageView.image = [_dataSource imageForItemInGLAssetViewControllerAtIndex:indexPath.row];
     }
     if (_datasourceHas.asyncImageForItem && self.type == GLAssetType_Picture) {
+        cell.cellType = AssetCollectionViewCellType_Pic;
         [_dataSource asyncImageForItemInGLAssetViewControllerAtIndex:indexPath.row imageAsyncCallback:^(UIImage *image) {
             cell.imageView.image = image;
         }];
     }
     if (_datasourceHas.asyncVideoForItem && self.type == GLAssetType_Video) {
-        [_dataSource asyncVideoForItemInGLAssetViewControllerAtIndex:indexPath.row videoAsyncCallback:^(AVAsset *asset) {
-            // TODO:
-           
+        cell.cellType = AssetCollectionViewCellType_Vid;
+        [_dataSource asyncVideoForItemInGLAssetViewControllerAtIndex:indexPath.row videoAsyncCallback:^(NSURL *assetUrl) {
+            [cell setVideoUrl:assetUrl];
         }];
     }
     
@@ -144,20 +121,6 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     return YES;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGRect originRect = CGRectZero;
-    
-    if (_delegateHas.imageRectForItemAtIndex) {
-        originRect = [_delegate imageRectForItemInGLAssetViewControllerAtIndex:indexPath.row];
-    }
-    
-    if (CGRectEqualToRect(originRect, CGRectZero)) {
-        [self dismiss];
-    }
-    else {
-        [self dismissToOriginRect:originRect];
-    }
-}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems]lastObject];
@@ -166,6 +129,21 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 }
 
 #pragma mark - user events
+- (void)tapGestureRecognizer:(UITapGestureRecognizer *)tapGestureRecognizer {
+        CGRect originRect = CGRectZero;
+        if (_delegateHas.imageRectForItemAtIndex) {
+            originRect = [_delegate imageRectForItemInGLAssetViewControllerAtIndex:
+                          [[self.collectionView indexPathsForVisibleItems]lastObject].row];
+        }
+    
+        if (CGRectEqualToRect(originRect, CGRectZero)) {
+            [self dismiss];
+        }
+        else {
+            [self dismissToOriginRect:originRect];
+        }
+}
+
 - (void)swipeVerGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
     /** Swipe finish here we recover state*/
     if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
@@ -217,6 +195,9 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     _swipeVerGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(swipeVerGestureRecognizer:)];
     [self addGestureRecognizer:_swipeVerGestureRecognizer];
     _prePoint = _nowPoint = CGPointZero;
+    
+    _tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureRecognizer:)];
+    [self addGestureRecognizer:_tapGestureRecognizer];
     
     /** Add current label */
     [self addSubview:self.currentPageLabel];
@@ -433,6 +414,13 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
                                         animated:NO];
     self.currentPageLabel.text = [NSString stringWithFormat:@"%ld/%ld",_startShowIndex + 1,_numbersOfItems];
     [self setNeedsLayout];
+    
+    if (self.type == GLAssetType_Video) {
+        self.currentPageLabel.hidden = YES;
+    }
+    else if (self.type == GLAssetType_Picture) {
+        self.currentPageLabel.hidden = NO;
+    }
 }
 
 
