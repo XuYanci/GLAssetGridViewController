@@ -120,9 +120,9 @@
         }];
         
         [self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(_container.mas_bottom).offset(-10);
-            make.left.mas_equalTo(_container.mas_left).offset(10);
-            make.right.mas_equalTo(_container.mas_right).offset(-10);
+            make.bottom.mas_equalTo(_container.mas_bottom).offset(0);
+            make.left.mas_equalTo(_container.mas_left).offset(0);
+            make.right.mas_equalTo(_container.mas_right).offset(0);
             make.height.offset(44.0);
         }];
         
@@ -162,8 +162,39 @@
 }
 
 - (void)setURL:(NSURL *)URL {
-    
+    if (mURL != URL) {
+        mURL = [URL copy];
+    }
 }
+
+- (void)setPlayerItem:(AVPlayerItem *)playerItem {
+    mPlayerItem = playerItem;
+    CGSize videoSize = [self getPlayerItemVideoSize];
+    [self.container mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self.view);
+        make.width.offset(videoSize.width);
+        make.height.offset(videoSize.height);
+    }];
+    [self.view updateConstraints];
+    [self.view setNeedsLayout];
+}
+
+- (AVPlayerItem *)getPlayerItem {
+    return mPlayerItem;
+}
+
+
+
+- (CGSize)getPlayerItemVideoSize {
+    AVAssetTrack *track = [[mPlayerItem.asset tracksWithMediaType:AVMediaTypeVideo]objectAtIndex:0];
+    CGSize size = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
+    CGSize videoSize = CGSizeMake(fabs(size.width), fabs(size.height));
+    CGSize actualSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,
+                                   [UIScreen mainScreen].bounds.size.width  / (videoSize.width / videoSize.height ) );
+
+    return actualSize;
+}
+
 #pragma mark - notification
 #pragma mark - getter and setter
 - (UIButton *)playBtn {
@@ -250,4 +281,8 @@
 }
 */
 
+@end
+
+
+@implementation GLAssetPlaybackViewController (Player)
 @end

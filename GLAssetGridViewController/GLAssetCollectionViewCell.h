@@ -16,6 +16,7 @@ typedef enum : NSUInteger {
 
 @interface GLAssetCollectionViewCell : UICollectionViewCell
 @property (nonatomic,strong)UIImageView *imageView;
-@property (nonatomic,strong)NSURL *videoUrl;
+//@property (nonatomic,strong)NSURL *videoUrl;
+@property (nonatomic,strong)AVPlayerItem *playerItem;
 @property (nonatomic,assign)AssetCollectionViewCellType cellType;
 @end

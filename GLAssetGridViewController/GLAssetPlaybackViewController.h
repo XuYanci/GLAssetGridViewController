@@ -39,7 +39,7 @@
 @property (nonatomic,strong)GLAssetPlayBackView *mPlaybackView;
 @property (nonatomic, copy) NSURL* URL;
 @property (readwrite, strong, setter=setPlayer:, getter=player) AVPlayer* mPlayer;
-@property (strong) AVPlayerItem* mPlayerItem;
+@property (nonatomic,strong,setter=setPlayerItem:,getter=getPlayerItem) AVPlayerItem* mPlayerItem;
 
 @property (nonatomic,weak)id<GLAssetPlaybackViewControllerDataSource>dataSource;
 @property (nonatomic,weak)id<GLAssetPlaybackViewControllerDelegate>delegate;

@@ -107,8 +107,8 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     }
     if (_datasourceHas.asyncVideoForItem && self.type == GLAssetType_Video) {
         cell.cellType = AssetCollectionViewCellType_Vid;
-        [_dataSource asyncVideoForItemInGLAssetViewControllerAtIndex:indexPath.row videoAsyncCallback:^(NSURL *assetUrl) {
-            [cell setVideoUrl:assetUrl];
+        [_dataSource asyncVideoForItemInGLAssetViewControllerAtIndex:indexPath.row videoAsyncCallback:^(AVPlayerItem *playerItem) {
+            [cell setPlayerItem:playerItem];
         }];
     }
     
@@ -253,8 +253,8 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
             self.collectionView.hidden = NO;
         }];
     }
-    /** Get origin image */
-    if (_datasourceHas.asyncImageForItem) {
+    /** Get origin image for image picker or video picker */
+    if (_datasourceHas.asyncImageForItem ) {
         [_dataSource asyncImageForItemInGLAssetViewControllerAtIndex:originIndex imageAsyncCallback:^(UIImage *image) {
             if (!originImage) {
                 originImage = image;
@@ -270,10 +270,6 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
                 }];
             }
         }];
-    }
-    
-    if (_datasourceHas.asyncVideoForItem && self.type == GLAssetType_Video) {
-            
     }
 }
 
@@ -360,6 +356,16 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
         top = (self.frame.size.height - finalHeight) / 2.f;
     }
     return CGRectMake(0.f, top, self.frame.size.width, finalHeight);
+}
+
+- (CGSize)caculateScaledFinalFrameForPlayerItem:(AVPlayerItem *)playerItem {
+    AVAssetTrack *track = [[playerItem.asset tracksWithMediaType:AVMediaTypeVideo]objectAtIndex:0];
+    CGSize size = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
+    CGSize videoSize = CGSizeMake(fabs(size.width), fabs(size.height));
+    CGSize actualSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,
+                                   [UIScreen mainScreen].bounds.size.width  / (videoSize.width / videoSize.height ) );
+    
+    return actualSize;
 }
 
 - (CGRect)caculateCurrentDisplayImageFrame {
