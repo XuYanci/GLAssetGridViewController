@@ -169,6 +169,8 @@
 
 - (void)setPlayerItem:(AVPlayerItem *)playerItem {
     mPlayerItem = playerItem;
+    
+    /** Resize video frame */
     CGSize videoSize = [self getPlayerItemVideoSize];
     [self.container mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.view);
@@ -177,6 +179,8 @@
     }];
     [self.view updateConstraints];
     [self.view setNeedsLayout];
+    
+    /** TODO play video */
 }
 
 - (AVPlayerItem *)getPlayerItem {
