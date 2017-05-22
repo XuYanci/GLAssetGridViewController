@@ -94,7 +94,6 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"%s indexPath.row = %ld",__func__,indexPath.row);
     GLAssetCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     if (_datasourceHas.imageForItem) {
         cell.imageView.image = [_dataSource imageForItemInGLAssetViewControllerAtIndex:indexPath.row];
@@ -127,7 +126,9 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems]lastObject];
-    self.currentPageLabel.text = [NSString stringWithFormat:@"%ld/%ld",indexPath.row + 1,_numbersOfItems];
+    self.currentPageLabel.text = [NSString stringWithFormat:@"%ld/%ld",
+                                  (unsigned long)(indexPath.row + 1),
+                                  (unsigned long)_numbersOfItems];
     [self setNeedsLayout];
 }
 
@@ -426,7 +427,7 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_startShowIndex inSection:0]atScrollPosition:UICollectionViewScrollPositionNone
                                         animated:NO];
-    self.currentPageLabel.text = [NSString stringWithFormat:@"%ld/%ld",_startShowIndex + 1,_numbersOfItems];
+    self.currentPageLabel.text = [NSString stringWithFormat:@"%ld/%ld",(unsigned long)(_startShowIndex + 1),(unsigned long)_numbersOfItems];
     [self setNeedsLayout];
     
     if (self.type == GLAssetType_Video) {
