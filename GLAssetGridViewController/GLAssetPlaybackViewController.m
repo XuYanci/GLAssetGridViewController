@@ -84,6 +84,13 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     [self _layoutSubviews];
 }
 
+- (void)dealloc {
+    [self removePlayerTimeObserver];
+    [self.mPlayer removeObserver:self forKeyPath:@"currentItem"];
+    [self.mPlayer removeObserver:self forKeyPath:@"rate"];
+    [mPlayer.currentItem removeObserver:self forKeyPath:@"status"];
+    [self.mPlayer pause];
+}
 
 
 
