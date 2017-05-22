@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GLAssetGridViewController/GLAssetPlaybackViewController.m"
-            timestampString = "517115649.217842"
+            filePath = "GLAssetGridViewController/GLAssetViewBrowser.m"
+            timestampString = "517120452.904117"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-dealloc"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-tapGestureRecognizer:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

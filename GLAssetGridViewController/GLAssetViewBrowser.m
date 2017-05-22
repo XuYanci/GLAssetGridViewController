@@ -279,15 +279,14 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
 - (void)dismissToOriginRect:(CGRect)originRect {
     self.collectionView.hidden = YES;
     self.effectView.hidden = YES;
-    
-    CGRect fromRect = CGRectZero;
-    fromRect = [self caculateCurrentDisplayImageFrame];
-    
-    UIImageView *imageView = [[UIImageView alloc]init];
-    [self addSubview:imageView];
-    
+
     __block UIImage *originImage = nil;
     if (_datasourceHas.imageForItem) {
+        CGRect fromRect = CGRectZero;
+        fromRect = [self caculateCurrentDisplayImageFrame];
+        UIImageView *imageView = [[UIImageView alloc]init];
+        [self addSubview:imageView];
+        
         originImage = [_dataSource imageForItemInGLAssetViewControllerAtIndex:
                        [[self.collectionView indexPathsForVisibleItems] lastObject].row];
         imageView.image = originImage;
@@ -302,6 +301,11 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     }
     
     if (_datasourceHas.asyncImageForItem && self.type == GLAssetType_Picture) {
+        CGRect fromRect = CGRectZero;
+        fromRect = [self caculateCurrentDisplayImageFrame];
+        UIImageView *imageView = [[UIImageView alloc]init];
+        [self addSubview:imageView];
+        
         [_dataSource asyncImageForItemInGLAssetViewControllerAtIndex:[[self.collectionView indexPathsForVisibleItems] lastObject].row imageAsyncCallback:^(UIImage *image) {
             if (!originImage) {
                 originImage = image;
@@ -319,6 +323,7 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     
     if (_datasourceHas.asyncVideoForItem && self.type == GLAssetType_Video) {
         [self dismiss];
+        // TODO: Add animations
     }
 }
 
