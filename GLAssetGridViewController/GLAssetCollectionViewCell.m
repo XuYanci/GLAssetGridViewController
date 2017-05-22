@@ -15,8 +15,11 @@
 
 @implementation GLAssetCollectionViewCell {
     NSURL *_videoUrl;
-    AVPlayerItem *_playerItem;
+    AVAsset *_playAsset;
 }
+
+ 
+
 - (void)layoutSubviews {
     self.imageView.frame = self.contentView.bounds;
     self.playbackViewController.view.frame = self.contentView.bounds;
@@ -45,10 +48,9 @@
 //    [self.playbackViewController setURL:_videoUrl];
 //}
 
-
-- (void)setPlayerItem:(AVPlayerItem *)playerItem {
-    _playerItem = playerItem;
-    [self.playbackViewController setPlayerItem:_playerItem];
+- (void)setPlayAsset:(AVAsset *)playAsset {
+    _playAsset = playAsset;
+    [self.playbackViewController setMPlayAsset:playAsset];
 }
 
 - (void)setCellType:(AssetCollectionViewCellType)cellType {
@@ -63,4 +65,7 @@
     }
  }
 
+- (void)stopPlay {
+    [self.playbackViewController stop];
+}
 @end

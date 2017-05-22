@@ -107,8 +107,8 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     }
     if (_datasourceHas.asyncVideoForItem && self.type == GLAssetType_Video) {
         cell.cellType = AssetCollectionViewCellType_Vid;
-        [_dataSource asyncVideoForItemInGLAssetViewControllerAtIndex:indexPath.row videoAsyncCallback:^(AVPlayerItem *playerItem) {
-            [cell setPlayerItem:playerItem];
+        [_dataSource asyncVideoForItemInGLAssetViewControllerAtIndex:indexPath.row videoAsyncCallback:^(AVAsset *playAsset) {
+            [cell setPlayAsset:playAsset];
         }];
     }
     
@@ -121,6 +121,9 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
     return YES;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    [(GLAssetCollectionViewCell *)cell stopPlay];
+}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems]lastObject];

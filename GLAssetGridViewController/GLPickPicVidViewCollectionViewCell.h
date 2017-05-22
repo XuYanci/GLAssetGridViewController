@@ -31,6 +31,5 @@ typedef enum : NSUInteger {
 @property (nonatomic,assign) GLPickPicVidCVType pickPicVidCVType;
 @property (nonatomic,strong) UIImage *image;
  
-
 - (void)setTickBtnSelected:(BOOL)selected;
 @end

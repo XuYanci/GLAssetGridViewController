@@ -176,9 +176,9 @@ static NSString *const kGLPickPicVidViewCollectionViewCellIdentifier = @"kGLPick
 
 - (void)asyncVideoForItemInGLAssetViewControllerAtIndex:(NSUInteger)itemIndex videoAsyncCallback:(GLAssetViewVideoAsyncCallback)callback {
     PHAsset *asset = [self.allPhotos objectAtIndex:itemIndex];
-    [self.imageManager requestPlayerItemForVideo:asset options:nil resultHandler:^(AVPlayerItem * _Nullable playerItem, NSDictionary * _Nullable info) {
+    [self.imageManager requestAVAssetForVideo:asset options:nil resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback(playerItem);
+            callback(asset);
         });
     }];
 }
