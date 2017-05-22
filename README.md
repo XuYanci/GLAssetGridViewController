@@ -6,7 +6,7 @@
 
 GLAssetGridViewController 是一个资源视图控制器，例如相片选择器，适配选择器。同时也包含了一个图片浏览器。
 
-GLAssetGridViewController is an asset view controller, like an picture picker and video picker , also has an photo browser.
+GLAssetGridViewController is an asset view controller, like an picture picker and video picker , also has an photo browser & video browser .
 
 
 <div style="width:100%;">
