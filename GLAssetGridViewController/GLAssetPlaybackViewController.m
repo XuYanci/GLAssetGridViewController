@@ -127,7 +127,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 }
 
 - (void)fullScreen {
-    NSLog(@"fullscreen");
+    // TODO: Add fullscreen
 }
 
 - (void)startPlay {
@@ -180,6 +180,8 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
         double time = CMTimeGetSeconds([self.mPlayer currentTime]);
         
         [self.timeSlider setValue:(maxValue - minValue) * time / duration + minValue];
+        self.currentTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d",((int)time)/60, (int)((int)time%60)];
+        self.leftTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d",((int)(duration - time))/60,((int)(duration - time)%60)];
     }
     
 }
