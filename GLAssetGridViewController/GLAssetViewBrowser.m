@@ -421,7 +421,6 @@ static NSString *const kCellIdentifier = @"cellIdentifier";
         
     }];
     
-    
     self.collectionView.contentInset = UIEdgeInsetsZero;
     [weakSelf.collectionView reloadData];
     

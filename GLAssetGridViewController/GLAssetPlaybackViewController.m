@@ -10,10 +10,12 @@
 #import "GLAssetPlaybackViewController.h"
 #import "GLAssetPlayBackView.h"
 
-@interface GLAssetPlaybackContainer : UIView
+@interface GLAssetPlaybackContainer : UIView<UIGestureRecognizerDelegate>
+@property (nonatomic,strong) UIPanGestureRecognizer *panGR;
 @end
 
 @implementation GLAssetPlaybackContainer
+
 
 @end
 
@@ -22,8 +24,8 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext;
 
 
-@interface GLAssetPlaybackViewController ()
-
+@interface GLAssetPlaybackViewController ()<UIGestureRecognizerDelegate>
+@property (nonatomic,strong) UIPanGestureRecognizer *toolBarPanGR;
 @end
 
 
@@ -48,7 +50,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
- 
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,6 +98,43 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 
 #pragma mark - datasource
 #pragma mark - delegate
+
+/** Prevent playback container scroll */
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    if( gestureRecognizer == self.toolBarPanGR){
+        return NO;
+    }
+    return YES;
+}
+
+- (void)actionTapGesture:(UIPanGestureRecognizer *)panGR {
+    
+    switch (panGR.state) {
+        case UIGestureRecognizerStateBegan:
+            [self beginScrubbing:self.timeSlider];
+            break;
+        case UIGestureRecognizerStateChanged: {
+            UISlider *_slider =  self.timeSlider;
+            CGPoint touchPoint = [panGR locationInView:_slider];
+            CGFloat value = (_slider.maximumValue - _slider.minimumValue) * (touchPoint.x / _slider.frame.size.width );
+            [_slider setValue:value animated:NO];
+            [self scrub:self.timeSlider];
+        }
+            break;
+        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled: {
+            [self endScrubbing:self.timeSlider];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+}
+
 #pragma mark - user events
 - (void)tapInView {
     if (_isStartPlay) {
@@ -104,7 +143,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 }
 
 - (void)play {
-   
+    
     if (!self.playBtn.selected) {
         NSLog(@"play");
         
@@ -123,11 +162,24 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
         [self.playBtn setSelected:NO];
     }
     
-   
+    
 }
 
-- (void)fullScreen {
-    // TODO: Add fullscreen
+- (void)fullScreen:(UIButton *)btn {
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"tip" message:@"This func is not implement now , later  please fork it or watch it" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"confirm" style:UIAlertActionStyleDefault handler:nil]];
+    
+    [self presentViewController:alert animated:NO completion:nil];
+    
+    if (!btn.selected) {
+        // Enter full screen
+    }
+    else {
+        // Enter small screen
+    }
+    
+    btn.selected = !btn.selected;
 }
 
 - (void)startPlay {
@@ -135,10 +187,11 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     NSArray *requestedKeys = @[@"playable"];
     [self prepareToPlayAsset:(AVURLAsset *)mPlayAsset withKeys:requestedKeys];
     _isStartPlay = YES;
+    self.toolbar.hidden = NO;
     [self.view setNeedsLayout];
 }
 
-#pragma mark - movie controller methods 
+#pragma mark - movie controller methods
 - (void)initScrubberTimer {
     double interval = .1f;
     
@@ -162,7 +215,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
                      {
                          [weakSelf syncScrubber];
                      }];
-
+    
 }
 - (void)syncScrubber {
     CMTime playerDuration = [self playerItemDuration];
@@ -185,8 +238,90 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     }
     
 }
+
+
+/* The user is dragging the movie controller thumb to scrub through the movie. */
+- (IBAction)beginScrubbing:(id)sender
+{
+    mRestoreAfterScrubbingRate = [self.mPlayer rate];
+    [self.mPlayer setRate:0.f];
+    
+    /* Remove previous timer. */
+    [self removePlayerTimeObserver];
+}
+
+/* Set the player current time to match the scrubber position. */
+- (IBAction)scrub:(id)sender
+{
+    if ([sender isKindOfClass:[UISlider class]] && !isSeeking)
+    {
+        isSeeking = YES;
+        UISlider* slider = sender;
+        
+        CMTime playerDuration = [self playerItemDuration];
+        if (CMTIME_IS_INVALID(playerDuration)) {
+            return;
+        }
+        
+        double duration = CMTimeGetSeconds(playerDuration);
+        if (isfinite(duration))
+        {
+            float minValue = [slider minimumValue];
+            float maxValue = [slider maximumValue];
+            float value = [slider value];
+            
+            double time = duration * (value - minValue) / (maxValue - minValue);
+            
+            [self.mPlayer seekToTime:CMTimeMakeWithSeconds(time, NSEC_PER_SEC) completionHandler:^(BOOL finished) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    isSeeking = NO;
+                });
+            }];
+        }
+    }
+}
+
+/* The user has released the movie thumb control to stop scrubbing through the movie. */
+- (IBAction)endScrubbing:(id)sender
+{
+    if (!mTimeObserver)
+    {
+        CMTime playerDuration = [self playerItemDuration];
+        if (CMTIME_IS_INVALID(playerDuration))
+        {
+            return;
+        }
+        
+        double duration = CMTimeGetSeconds(playerDuration);
+        if (isfinite(duration))
+        {
+            CGFloat width = CGRectGetWidth([self.timeSlider bounds]);
+            double tolerance = 0.5f * duration / width;
+            
+            __weak GLAssetPlaybackViewController *weakSelf = self;
+            mTimeObserver = [self.mPlayer addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(tolerance, NSEC_PER_SEC) queue:NULL usingBlock:
+                             ^(CMTime time)
+                             {
+                                 [weakSelf syncScrubber];
+                             }];
+        }
+    }
+    
+    if (mRestoreAfterScrubbingRate)
+    {
+        [self.mPlayer setRate:mRestoreAfterScrubbingRate];
+        mRestoreAfterScrubbingRate = 0.f;
+    }
+}
+
+- (BOOL)isScrubbing
+{
+    return mRestoreAfterScrubbingRate != 0.f;
+}
+
+
 - (void)disableScrubber {
-   self.timeSlider.enabled = NO;
+    self.timeSlider.enabled = NO;
 }
 - (void)disablePlayerButtons {
     self.playBtn.enabled = NO;
@@ -222,7 +357,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 }
 
 - (void)reloadData {
-  
+    
 }
 
 - (void)_setNeedsReload {
@@ -258,12 +393,12 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
             make.height.offset(30);
             make.centerY.mas_equalTo(_toolbar.mas_centerY).offset(0);
         }];
-
+        
         [self.currentTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.playBtn.mas_right).offset(10);
             make.centerY.mas_equalTo(_toolbar.mas_centerY).offset(0);
         }];
-
+        
         [self.fullScreenBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(_toolbar.mas_right).offset(-10);
             make.width.offset(30);
@@ -275,7 +410,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
             make.right.mas_equalTo(self.fullScreenBtn.mas_left).offset(-10);
             make.centerY.mas_equalTo(_toolbar.mas_centerY).offset(0);
         }];
-
+        
         [self.timeSlider mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.currentTimeLabel.mas_right).offset(10);
             make.centerY.mas_equalTo(_toolbar.mas_centerY).offset(0);
@@ -295,16 +430,14 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     }
     
     if (!_isStartPlay) {
-        self.toolbar.hidden = YES;
         self.startPlayBtn.hidden = NO;
         self.defaultImageView.hidden = NO;
     }
     else {
-        self.toolbar.hidden = NO;
         self.startPlayBtn.hidden = YES;
         self.defaultImageView.hidden = YES;
     }
-
+    
 }
 
 - (void)setURL:(NSURL *)URL {
@@ -321,6 +454,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     
     _isStartPlay = NO;
     mPlayAsset = __mPlayAsset;
+    
     /** Resize video frame */
     CGSize videoSize = [self getPlayerItemVideoSize];
     
@@ -349,7 +483,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     CGSize videoSize = CGSizeMake(fabs(size.width), fabs(size.height));
     CGSize actualSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,
                                    [UIScreen mainScreen].bounds.size.width  / (videoSize.width / videoSize.height ) );
-
+    
     return actualSize;
 }
 
@@ -393,11 +527,11 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 - (UIButton *)fullScreenBtn {
     if (!_fullScreenBtn) {
         _fullScreenBtn = [[UIButton alloc]init];
-        [_fullScreenBtn setImage:[UIImage imageNamed:@"movieFullscreen"]
-                        forState:UIControlStateNormal];
         [_fullScreenBtn setImage:[UIImage imageNamed:@"ft_video_icon_full"]
+                        forState:UIControlStateNormal];
+        [_fullScreenBtn setImage:[UIImage imageNamed:@"movieFullscreen"]
                         forState:UIControlStateSelected];
-        [_fullScreenBtn addTarget:self action:@selector(fullScreen) forControlEvents:UIControlEventTouchUpInside];
+        [_fullScreenBtn addTarget:self action:@selector(fullScreen:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _fullScreenBtn;
 }
@@ -406,6 +540,11 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     if (!_timeSlider) {
         _timeSlider = [[UISlider alloc]init];
         [_timeSlider setThumbImage:[UIImage imageNamed:@"xx_video_btn"] forState:UIControlStateNormal];
+        [_timeSlider addTarget:self action:@selector(beginScrubbing:) forControlEvents:UIControlEventTouchDown];
+        [_timeSlider addTarget:self action:@selector(scrub:) forControlEvents:UIControlEventValueChanged];
+        [_timeSlider addTarget:self action:@selector(endScrubbing:) forControlEvents:UIControlEventTouchUpInside];
+        [_timeSlider addTarget:self action:@selector(endScrubbing:) forControlEvents:UIControlEventTouchUpOutside];
+        [_timeSlider setTag:0xFF];
     }
     return _timeSlider;
 }
@@ -444,6 +583,10 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     if (!_toolbar) {
         _toolbar = [[GLAssetPlaybackContainer alloc]init];
         _toolbar.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        
+        self.toolBarPanGR = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(actionTapGesture:)];
+        self.toolBarPanGR.delegate = self;
+        [_toolbar addGestureRecognizer:self.toolBarPanGR];
     }
     return _toolbar;
 }
@@ -458,14 +601,14 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
 
@@ -639,7 +782,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
                          options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
                          context:AVPlayerDemoPlaybackViewControllerRateObservationContext];
         
-
+        
     }
     
     /* Make our new AVPlayerItem the AVPlayer's current item. */
@@ -751,7 +894,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
             
             [self setViewDisplayName];
             
-            /* Specifies that the player should preserve the video’s aspect ratio and 
+            /* Specifies that the player should preserve the video’s aspect ratio and
              fit the video within the layer’s bounds. */
             [self.mPlaybackView setVideoFillMode:AVLayerVideoGravityResizeAspect];
             
