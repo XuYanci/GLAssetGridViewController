@@ -22,6 +22,7 @@
 		AD3797461EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3797431EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m */; };
 		AD37974C1EC7522B00E3B9ED /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37974A1EC7522B00E3B9ED /* Photos.framework */; };
 		AD3797501EC7F2FA00E3B9ED /* MBProgressHUD+GL.m in Sources */ = {isa = PBXBuildFile; fileRef = AD37974F1EC7F2FA00E3B9ED /* MBProgressHUD+GL.m */; };
+		AD6B23331EDAACF100C92220 /* UIView+CustomAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6B23321EDAACF100C92220 /* UIView+CustomAutoLayout.m */; };
 		ADC0DBAE1ECD9DEB002859A9 /* GLAssetPlayBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DBAD1ECD9DEB002859A9 /* GLAssetPlayBackView.m */; };
 		ADC0DBB31ECDAD47002859A9 /* GLAssetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC0DBB21ECDAD47002859A9 /* GLAssetCollectionViewCell.m */; };
 		B18644F4FA59876B74F460D4 /* libPods-GLAssetGridViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FE48E7065CFF4D67AB9ED4 /* libPods-GLAssetGridViewController.a */; };
@@ -77,6 +78,8 @@
 		AD37974B1EC7522B00E3B9ED /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		AD37974E1EC7F2FA00E3B9ED /* MBProgressHUD+GL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+GL.h"; sourceTree = "<group>"; };
 		AD37974F1EC7F2FA00E3B9ED /* MBProgressHUD+GL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+GL.m"; sourceTree = "<group>"; };
+		AD6B23311EDAACF100C92220 /* UIView+CustomAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomAutoLayout.h"; sourceTree = "<group>"; };
+		AD6B23321EDAACF100C92220 /* UIView+CustomAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomAutoLayout.m"; sourceTree = "<group>"; };
 		ADC0DBAC1ECD9DEB002859A9 /* GLAssetPlayBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAssetPlayBackView.h; sourceTree = "<group>"; };
 		ADC0DBAD1ECD9DEB002859A9 /* GLAssetPlayBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAssetPlayBackView.m; sourceTree = "<group>"; };
 		ADC0DBB11ECDAD47002859A9 /* GLAssetCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAssetCollectionViewCell.h; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 			children = (
 				AD37974E1EC7F2FA00E3B9ED /* MBProgressHUD+GL.h */,
 				AD37974F1EC7F2FA00E3B9ED /* MBProgressHUD+GL.m */,
+				AD6B23311EDAACF100C92220 /* UIView+CustomAutoLayout.h */,
+				AD6B23321EDAACF100C92220 /* UIView+CustomAutoLayout.m */,
 				AD37973E1EC7503300E3B9ED /* GLAssetGridViewController.h */,
 				AD37973F1EC7503300E3B9ED /* GLAssetGridViewController.m */,
 				AD3797401EC7503300E3B9ED /* GLAssetViewBrowser.h */,
@@ -449,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC0DBB31ECDAD47002859A9 /* GLAssetCollectionViewCell.m in Sources */,
+				AD6B23331EDAACF100C92220 /* UIView+CustomAutoLayout.m in Sources */,
 				AD3797451EC7503300E3B9ED /* GLAssetViewBrowser.m in Sources */,
 				AD3797131EC74F9900E3B9ED /* ViewController.m in Sources */,
 				AD3797461EC7503300E3B9ED /* GLPickPicVidViewCollectionViewCell.m in Sources */,

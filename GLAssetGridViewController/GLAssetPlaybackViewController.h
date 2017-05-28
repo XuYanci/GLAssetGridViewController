@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GLAssetPlayBackView.h"
+#import "UIView+CustomAutoLayout.h"
 @protocol GLAssetPlaybackViewControllerDataSource <NSObject>
 
 @end

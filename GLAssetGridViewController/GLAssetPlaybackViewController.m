@@ -40,6 +40,9 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     
     struct{
     }_delegateHas;
+    
+    UIView *_movieViewParentViewBefore; /** Record parent view before enter fullscreen */
+    CGRect _moveViewFrameBefore;        /** Record frame before enter fullscreen */
 }
 @synthesize mPlayer, mPlayAsset, mPlaybackView,mPlayerItem;
 
@@ -130,9 +133,6 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
         default:
             break;
     }
-    
-    
-    
 }
 
 #pragma mark - user events
@@ -166,20 +166,74 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 }
 
 - (void)fullScreen:(UIButton *)btn {
-    
+#if 0
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"tip" message:@"This func is not implement now , later  please fork it or watch it" preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"confirm" style:UIAlertActionStyleDefault handler:nil]];
     
     [self presentViewController:alert animated:NO completion:nil];
+#endif
     
     if (!btn.selected) {
         // Enter full screen
+        [self enterFullScreen];
     }
     else {
         // Enter small screen
+        [self exitFullScreen];
     }
     
     btn.selected = !btn.selected;
+}
+
+
+/** Refer to https://techblog.toutiao.com/2017/03/28/fullscreen/  method first */
+- (void)enterFullScreen {
+    _movieViewParentViewBefore = self.container.superview;
+    _moveViewFrameBefore = self.container.frame;
+    
+    
+    CGRect rectInWindow = [self.container convertRect:self.container.bounds toView:[UIApplication sharedApplication].keyWindow];
+    [self.container removeFromSuperview];
+    self.container.frame = rectInWindow;
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:self.container];
+    
+    if (self.container.frame.size.height > self.container.frame.size.width) {
+        return;
+    }
+    
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.container.transform = CGAffineTransformMakeRotation(M_PI_2);
+        self.container.bounds = CGRectMake(0, 0, CGRectGetHeight(self.container.superview.bounds), CGRectGetWidth(self.container.superview.bounds));
+        
+        self.container.center = CGPointMake(CGRectGetMidX(self.container.superview.bounds), CGRectGetMidY(self.container.superview.bounds));
+        [self.container setNeedsUpdateConstraints];
+        [self.container setNeedsLayout];
+        
+        [self.toolbar sizeWith:CGSizeMake(self.container.frame.size.height, 44.0)];
+        [self.toolbar alignParentBottom];
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+}
+
+- (void)exitFullScreen {
+    CGRect frame = [_movieViewParentViewBefore convertRect:_moveViewFrameBefore toView:[UIApplication sharedApplication].keyWindow];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.container.transform = CGAffineTransformIdentity;
+        self.container.frame = frame;
+        
+        [self.toolbar sizeWith:CGSizeMake(self.container.frame.size.width, 44.0)];
+        [self.toolbar alignParentBottom];
+    } completion:^(BOOL finished) {
+        [self.container removeFromSuperview];
+        self.container.frame = _moveViewFrameBefore;
+        [_movieViewParentViewBefore addSubview:self.container];
+        
+    }];
 }
 
 - (void)startPlay {
@@ -373,19 +427,11 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 
 - (void)_layoutSubviews {
     if (!_setupConstraints) {
-        [self.container mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.view.mas_left).offset(10);
-            make.right.mas_equalTo(self.view.mas_right).offset(-10);
-            make.top.mas_equalTo(self.view.mas_top).offset(10);
-            make.bottom.mas_equalTo(self.view.mas_bottom).offset(-10);
-        }];
+        [self.container sizeWith:self.view.frame.size];
+        [self.container alignParentCenter];
         
-        [self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(_container.mas_bottom).offset(0);
-            make.left.mas_equalTo(_container.mas_left).offset(0);
-            make.right.mas_equalTo(_container.mas_right).offset(0);
-            make.height.offset(44.0);
-        }];
+        [self.toolbar sizeWith:CGSizeMake(self.container.frame.size.width, 44.0)];
+        [self.toolbar alignParentBottom];
         
         [self.playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(_toolbar.mas_left).offset(10);
@@ -458,12 +504,10 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     /** Resize video frame */
     CGSize videoSize = [self getPlayerItemVideoSize];
     
-    [self.container mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self.view);
-        make.width.offset(videoSize.width);
-        make.height.offset(videoSize.height);
-    }];
-    
+    [self.container sizeWith:videoSize];
+    [self.container alignParentCenter];
+    [self.toolbar sizeWith:CGSizeMake(self.container.frame.size.width, 44.0)];
+    [self.toolbar alignParentBottom];
     /* TODO : Need to optimize */
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         UIImage *captureImage = [self getPlayerItemFirstImage];
@@ -472,7 +516,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
         });
     });
     
-    [self.view updateConstraints];
+    [self.view setNeedsUpdateConstraints];
     [self.view setNeedsLayout];
 }
 
