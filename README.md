@@ -8,6 +8,7 @@ GLAssetGridViewController 是一个资源视图控制器，例如相片选择器
 
 GLAssetGridViewController is an asset view controller, like an picture picker and video picker , also has an photo browser & video browser .
 
+Here is an project where i use it . [Project:666](https://github.com/XuYanci/666)
 
 <div style="width:100%;">
 <img src="https://github.com/XuYanci/GLAssetGridViewController/blob/master/readme~resource/present.gif" align="center" height="30%" width="30%" style="margin-left:20px;">
